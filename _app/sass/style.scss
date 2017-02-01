@@ -1,0 +1,333 @@
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+a {
+  &:active, &:focus, &:visited {
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+body#desktop {
+  background: #7399c3;
+  background: url(http://media.idownloadblog.com/wp-content/uploads/2016/06/macOS-Sierra-Wallpaper-Macbook-Wallpaper.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+
+  .editor {
+    background: #444;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 90%;
+    height: 90%;
+    max-width: 1000px;
+    max-height: 700px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.5);
+    transition: all 300ms ease;
+
+    .editor-header {
+      background-color: #fff;
+      padding: 0 10px;
+      font-size: 0;
+      line-height: 25px;
+      cursor: default;
+
+      .action-buttons {
+        display: inline-block;
+        vertical-align: middle;
+        width: 50px;
+        text-align: center;
+        font-size: 20px;
+
+        & > * {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          display: inline-block;
+          cursor: pointer;
+
+          &.a {
+            background-color: #F44336
+          }
+          &.b {
+            background-color: #FFC107
+          }
+          &.c {
+            background-color: #8BC34A
+          }
+
+          &:hover {
+            box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.1);
+          }
+
+        }
+      }
+      .title {
+        display: inline-block;
+        vertical-align: middle;
+        width: calc(100% - 50px);
+        font-size: 14px;
+        text-align: center;
+      }
+    }
+
+    .editor-frame {
+      font-size: 0;
+      height: calc(100% - 25px);
+
+      & > * {
+        display: inline-block;
+        vertical-align: top;
+        font-size: initial;
+        height: 100%;
+      }
+
+      .file-menu {
+        background-color: #555;
+        width: 175px;
+        font-size: 14px;
+        .menu-title {
+          padding: 15px 10px 10px 10px;
+          color: #ccc;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          background-color: rgba(0, 0, 0, 0.1);
+
+          li {
+            a {
+              padding: 5px 20px;
+              display: block;
+              color: #fff;
+              font-weight: lighter;
+              text-decoration: none;
+              font-size: 12px;
+
+              span {
+                color: #aaa;
+              }
+
+              &.active {
+                background-color: rgba(0, 0, 0, 0.2);
+              }
+
+            }
+          }
+        }
+      }
+
+      .file-frame {
+        background-color: #252525;
+        width: calc(100% - 175px);
+
+        iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+
+      }
+    }
+
+    &.close {
+      transform: scale(.8);
+      opacity: 0;
+      cursor: default;
+      pointer-events: none;
+    }
+    &.min {
+      top: initial;
+      bottom: 25px;
+      transform: translateY(100%);
+    }
+    &.full {
+      max-width: 100%;
+      width: 100%;
+      max-height: 100%;
+      height: 100%;
+      border-radius: 0;
+
+      .editor-header {
+        background-color: #353535;
+        color: #ccc;
+      }
+
+    }
+  }
+}
+
+body#code {
+  counter-reset: line;
+  background-color: #252525;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+  color: #eee;
+  padding: 5px 0;
+  box-shadow: inset 40px 0 0 0 #303030;
+
+  ::selection {
+    background: #000; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: #000; /* Gecko Browsers */
+  }
+
+  $text-indent: 20px;
+
+  .row {
+    display: block;
+    line-height: 18px;
+    height: 18px;
+    text-indent: $text-indent;
+    white-space: nowrap;
+    font-size: 0;
+
+    &.active {
+      background: rgba(0, 0, 0, 0.15);
+    }
+    &:before {
+      counter-increment: line;
+      content: counter(line);
+      width: 30px;
+      float: left;
+      text-align: right;
+      font-size: 12px;
+      text-indent: 0;
+      color: #777;
+    }
+    &:after {
+      content: ",";
+      color: orange;
+      font-size: 14px;
+    }
+
+    & > * {
+      display: inline-block;
+      text-indent: 0;
+      font-size: 14px;
+    }
+
+    &.end {
+      &:after {
+        content: "";
+      }
+    }
+
+    @for $i from 1 through 10 {
+      &.t#{$i} {
+        text-indent: $text-indent +(20 * ($i - 1));
+      }
+    }
+
+    .name {
+      color: #b593ff;
+      &:after {
+        content: ":";
+        color: orange;
+        margin-right: 5px;
+      }
+    }
+
+    .value {
+      color: #afc757;
+      &.and {
+        &:after {
+          content: ",";
+          color: orange;
+          font-size: 14px;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .obj {
+
+    }
+    .boo {
+      color: orange;
+    }
+    .cmd {
+      color: gray;
+      font-style: italic;
+    }
+
+    a {
+      color: #6dd4ff !important;
+      text-decoration: none;
+
+      &:hover {
+        color: #a4f2ff !important;
+      }
+    }
+  }
+
+}
+
+body#image {
+  font-family: 'Source Code Pro', monospace;
+
+  img {
+    width: 90%;
+    max-width: 250px;
+    margin: 30px;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  small {
+    font-size: 10px;
+    display: block;
+    margin: -20px 30px;
+    color: #888;
+  }
+}
+
+//MOBIL DEVICES
+@media (max-width: 768px) {
+  body#desktop {
+    .editor {
+      .editor-frame {
+        & > * {
+          display: block;
+          width: 100% !important;
+        }
+
+        .file-menu {
+          height: 50px;
+          .menu-title {
+            padding: 5px 10px;
+          }
+          ul {
+            overflow-y: auto;
+            white-space: nowrap;
+            li {
+              display: inline-block;
+              vertical-align: middle;
+            }
+          }
+        }
+
+        .file-frame {
+          height: calc(100% - 50px);
+        }
+      }
+    }
+  }
+}

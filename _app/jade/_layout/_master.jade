@@ -1,0 +1,33 @@
+doctype html
+
+//- IE HACK
+<!--[if IE 8]>
+script(type='text/javascript').
+    alert("Sitenin Görüntülenmesi için Güncel Bir Tarayıcı Kullanın");
+    window.location.href = "http://www.google.com/intl/tr/chrome/";
+<![endif]-->
+
+//- HTML CODES
+html(lang="tr")
+    head
+        meta(charset="UTF-8")
+        title
+            block title
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+        //BROWSER COLOR
+        meta(name='theme-color', content='#333333')
+        meta(name='msapplication-navbutton-color', content='#333333')
+        meta(name='apple-mobile-web-app-status-bar-style', content='#333333')
+        //CSS IMPORT
+        link(rel="stylesheet" type="text/css" href="css/vendor.css")
+        link(rel="stylesheet" type="text/css" href="css/style.css")
+        //JS IMPORT
+        script(src="js/vendor.js")
+        script(src="js/scripts.js")
+        //SEO META
+        meta(name="description" content="")
+        meta(name="keywords" content="")
+        meta(name="Author" content="")
+        meta(name="robots" content="index, follow")
+    //CONTENT SCOPE
+    block body

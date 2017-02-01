@@ -1,0 +1,26 @@
+extends _layout/_master
+
+block title
+    | Emre Tekin | Kişisel Web Sitesi
+
+block body
+    body#desktop
+        main.editor
+            .editor-header
+                .action-buttons
+                    .a
+                    .b
+                    .c
+                .title
+                    span.file jobs.json
+                    span.desc  | Emre Tekin CV
+            .editor-frame
+                .file-menu
+                    .menu-title Working Files
+                    ul
+                        li: a.active(href='_jobs.html' target='editor') jobs
+                            span .json
+                        li: a(href='_avatar.html' target='editor') avatar
+                            span .jpg
+                .file-frame
+                    iframe(name="editor" src='_jobs.html')

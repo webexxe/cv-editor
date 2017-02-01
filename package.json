@@ -1,0 +1,27 @@
+{
+  "name": "cv-editor",
+  "version": "1.0.0",
+  "description": "CV Page Design",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webexxe/cv-editor.git"
+  },
+  "author": "Emre Tekin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/webexxe/cv-editor/issues"
+  },
+  "homepage": "https://github.com/webexxe/cv-editor#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.7",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^2.0.1",
+    "jquery": "^3.1.1",
+    "normalize-css": "^2.3.1"
+  }
+}
