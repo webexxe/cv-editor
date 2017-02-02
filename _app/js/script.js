@@ -1,38 +1,58 @@
 $(function () {
 
-    var editor = $(".editor"),
+    var desktop = $("#desktop"),
+        frame = $("#iframe"),
+        frameX,
+        editor = $(".editor"),
         action = $(".action-buttons"),
         menu_file = $(".file-menu a"),
         editor_title = $(".editor-header .title .file"),
         line = $(".row");
 
-    editor.find(".a").on("click", function () {
-        editor.addClass("close");
+    if (desktop.length) {
 
-        setTimeout(function () {
-            editor.removeClass("close");
-        }, 4000)
-    });
+        $.frameLoad = function () {
+            setTimeout(function () {
+                frameX = frame.contents();
 
-    editor.find(".b").on("click", function () {
-        editor.toggleClass("min")
-    });
+                editor.add(frameX).on("click", function (e) {
+                    editor.removeClass("passive");
+                    e.stopPropagation();
+                });
+            }, 1000)
+        };
 
-    editor.find(".c").on("click", function () {
-        editor.toggleClass("full")
-    });
+        desktop.on("click", function () {
+            editor.addClass("passive");
+        });
 
-    menu_file.on("click", function () {
-        var _this = $(this);
+        editor.find(".a").on("click", function () {
+            editor.addClass("close");
 
-        editor_title.html(_this.html() + " ");
-        menu_file.removeClass("active");
-        _this.addClass("active")
-    });
+            setTimeout(function () {
+                editor.removeClass("close");
+            }, 4000)
+        });
 
-    line.on("click", function () {
-        line.removeClass("active");
-        $(this).addClass("active");
-    });
+        editor.find(".b").on("click", function () {
+            editor.toggleClass("min")
+        });
 
+        editor.find(".c").on("click", function () {
+            editor.toggleClass("full")
+        });
+
+        menu_file.on("click", function () {
+            var _this = $(this);
+            editor_title.html(_this.html());
+            menu_file.removeClass("active");
+            _this.addClass("active");
+        });
+
+    } else {
+        line.on("click", function () {
+            line.removeClass("active");
+            $(this).addClass("active");
+        });
+    }
 });

@@ -16,7 +16,7 @@ a {
 
 body#desktop {
   background: #7399c3;
-  background: url(http://media.idownloadblog.com/wp-content/uploads/2016/06/macOS-Sierra-Wallpaper-Macbook-Wallpaper.jpg) no-repeat center center fixed;
+  background: url(https://9to5mac.files.wordpress.com/2016/06/sierra.jpg?quality=82) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -37,7 +37,7 @@ body#desktop {
     max-height: 700px;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 0 5px 15px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 20px 2px rgba(0, 0, 0, 0.5);
     transition: all 300ms ease;
 
     .editor-header {
@@ -83,6 +83,10 @@ body#desktop {
         width: calc(100% - 50px);
         font-size: 14px;
         text-align: center;
+
+        .file:after{
+          content: " - ";
+        }
       }
     }
 
@@ -102,7 +106,8 @@ body#desktop {
         width: 175px;
         font-size: 14px;
         .menu-title {
-          padding: 15px 10px 10px 10px;
+          line-height: 30px;
+          padding: 5px 10px 0 10px;
           color: #ccc;
         }
 
@@ -114,7 +119,8 @@ body#desktop {
 
           li {
             a {
-              padding: 5px 20px;
+              padding: 0 20px;
+              line-height: 25px;
               display: block;
               color: #fff;
               font-weight: lighter;
@@ -171,6 +177,13 @@ body#desktop {
       }
 
     }
+    &.passive{
+      box-shadow: none;
+
+      .action-buttons > *{
+         background-color: #d5d5d5 !important;
+      }
+    }
   }
 }
 
@@ -184,10 +197,22 @@ body#code {
   box-shadow: inset 40px 0 0 0 #303030;
 
   ::selection {
-    background: #000; /* WebKit/Blink Browsers */
+    background: #000;
   }
   ::-moz-selection {
-    background: #000; /* Gecko Browsers */
+    background: #000;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   $text-indent: 20px;
@@ -278,7 +303,6 @@ body#code {
       }
     }
   }
-
 }
 
 body#image {
@@ -310,9 +334,9 @@ body#image {
         }
 
         .file-menu {
-          height: 50px;
+          height: 55px;
           .menu-title {
-            padding: 5px 10px;
+            padding: 0 10px;
           }
           ul {
             overflow-y: auto;
@@ -325,7 +349,7 @@ body#image {
         }
 
         .file-frame {
-          height: calc(100% - 50px);
+          height: calc(100% - 55px);
         }
       }
     }

@@ -1,7 +1,8 @@
 extends _layout/_master
 
 block title
-    | Emre Tekin | Kişisel Web Sitesi
+    =title_name
+    |  | Kişisel Web Sitesi
 
 block body
     body#desktop
@@ -13,7 +14,8 @@ block body
                     .c
                 .title
                     span.file jobs.json
-                    span.desc  | Emre Tekin CV
+                    span.desc=title_name
+                        |  CV
             .editor-frame
                 .file-menu
                     .menu-title Working Files
@@ -23,4 +25,4 @@ block body
                         li: a(href='_avatar.html' target='editor') avatar
                             span .jpg
                 .file-frame
-                    iframe(name="editor" src='_jobs.html')
+                    iframe#iframe(name="editor" src='_jobs.html' onLoad="$.frameLoad();")
